@@ -58,7 +58,7 @@ jobs:
 
       - name: Lint code
         run: |
-          cd ngml
+          # cd ngml
           composer run lint
           npm run lint
 
@@ -71,5 +71,5 @@ jobs:
 
       - name: Build assets
         run: |
-          cd ngml
+          # cd ngml
           npm run build
