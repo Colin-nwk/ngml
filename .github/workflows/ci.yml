@@ -42,7 +42,7 @@ jobs:
 
       - name: Prepare environment
         run: |
-          # cd ngml
+          cd ngml
           cp .env.example .env
           php artisan key:generate
 
@@ -53,23 +53,23 @@ jobs:
 
       - name: Install npm dependencies
         run: |
-          # cd ngml
+          cd ngml
           npm ci
 
       - name: Lint code
         run: |
-          # cd ngml
+          cd ngml
           composer run lint
           npm run lint
 
       - name: Run non-database tests
         run: |
-          # cd ngml
+          cd ngml
           # Run tests that don't require database
           php artisan test --exclude-group=slow,db
           npm run test --if-present
 
       - name: Build assets
         run: |
-          # cd ngml
+          cd ngml
           npm run build
