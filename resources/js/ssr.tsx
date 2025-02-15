@@ -15,7 +15,7 @@ createServer((page) =>
         resolve: (name) =>
             resolvePageComponent(
                 `./Pages/${name}.tsx`,
-                import.meta.glob('./Pages/**/*.tsx'),
+                import.meta.glob('./page/**/*.tsx'),
             ),
         setup: ({ App, props }) => {
             /* eslint-disable */
