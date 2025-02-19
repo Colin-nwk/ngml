@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('customer_site_id')->constrained()->cascadeOnDelete();
             $table->foreignId('daily_consumption_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('invoice_advice_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('invoice_advice_id')->nullable()->constrained('invoice_advice')->cascadeOnDelete();
             $table->float('volume')->comment('volume in mscf');
             $table->float('inlet_pressure')->nullable()->comment('inlet pressure in psi');
             $table->float('outlet_pressure')->nullable()->comment('outlet pressure in psi');
