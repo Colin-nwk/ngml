@@ -24,6 +24,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'role_id' => fake()->numberBetween(1, 100),
+            'department_id' => fake()->numberBetween(1, 100),
+            'location_id' => fake()->numberBetween(1, 100),
+            'designation_id' => fake()->numberBetween(1, 100),
+            'unit_id' => fake()->numberBetween(1, 100),
+            'approval_level_id' => fake()->numberBetween(1, 100),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
