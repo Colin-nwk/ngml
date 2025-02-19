@@ -1,68 +1,246 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --nnpc-medium-50: #f2fbf6;
+  --nnpc-medium-100: #e1f7ea;
+  --nnpc-medium-200: #c4eed8;
+  --nnpc-medium-300: #95e0b8;
+  --nnpc-medium-400: #60c892;
+  --nnpc-medium-500: #3aad71;
+  --nnpc-medium-600: #2b8e5a;
+  --nnpc-medium-700: #226844;
+  --nnpc-medium-800: #22593d;
+  --nnpc-medium-900: #1d4a34;
+  --nnpc-medium-950: #0b281a;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --nnpc-dark-50: #eefff0;
+  --nnpc-dark-100: #d8ffe0;
+  --nnpc-dark-200: #b4fec2;
+  --nnpc-dark-300: #79fc92;
+  --nnpc-dark-400: #38f05d;
+  --nnpc-dark-500: #0ed938;
+  --nnpc-dark-600: #05b428;
+  --nnpc-dark-700: #088d24;
+  --nnpc-dark-800: #0c6f22;
+  --nnpc-dark-900: #0c5b1e;
+  --nnpc-dark-950: #004010;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --nnpc-light-50: #eefff5;
+  --nnpc-light-100: #d7ffe9;
+  --nnpc-light-200: #b2ffd4;
+  --nnpc-light-300: #76ffb3;
+  --nnpc-light-400: #33f58b;
+  --nnpc-light-500: #09de6a;
+  --nnpc-light-600: #00af50;
+  --nnpc-light-700: #049145;
+  --nnpc-light-800: #0a713a;
+  --nnpc-light-900: #0a5d32;
+  --nnpc-light-950: #00341a;
+
+  --nnpc-red-50: #fff0f0;
+  --nnpc-red-100: #ffdddd;
+  --nnpc-red-200: #ffc0c0;
+  --nnpc-red-300: #ff9494;
+  --nnpc-red-400: #ff5757;
+  --nnpc-red-500: #ff2323;
+  --nnpc-red-600: #ec0000;
+  --nnpc-red-700: #d70000;
+  --nnpc-red-800: #b10303;
+  --nnpc-red-900: #920a0a;
+  --nnpc-red-950: #500000;
+
+  --nnpc-yellow-50: #fcffe7;
+  --nnpc-yellow-100: #f5ffc1;
+  --nnpc-yellow-200: #f0ff86;
+  --nnpc-yellow-300: #efff41;
+  --nnpc-yellow-400: #f6ff0d;
+  --nnpc-yellow-500: #e9e500;
+  --nnpc-yellow-600: #d1bb00;
+  --nnpc-yellow-700: #a68802;
+  --nnpc-yellow-800: #896a0a;
+  --nnpc-yellow-900: #74560f;
+  --nnpc-yellow-950: #442e04;
+
+  --nnpc-50: #d2f69e;
+  --nnpc-100: #00af50;
+  --nnpc-200: #226844;
+  --nnpc-300: #004010;
+  --nnpc-400: #e9e500;
+  --nnpc-500: #ec0000;
+
+  --nnpc-gray-100: #eaeef2;
+  --nnpc-gray-200: #49526a;
+  --nnpc-gray-500: #050505;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+@font-face {
+  font-family: "Mulish";
+  src: url("./assets/fonts/Mulish-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 1000;
+  font-display: swap;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+@font-face {
+  font-family: "Mulish-Italic";
+  src: url("./assets/fonts/Mulish-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 1000;
+  font-display: swap;
+  font-style: normal;
 }
 
 body {
-  margin: 0;
+  font-family: "Mulish", sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .gradient {
+    background: linear-gradient(
+      107.65deg,
+      #aae4c5 -6.77%,
+      #efec80 45.65%,
+      #d2f69e 108.92%
+    );
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      107.65deg,
+      #aae4c5 -6.77%,
+      #efec80 45.65%,
+      #d2f69e 108.92%
+    );
+  }
+}
+.logingradient-bg {
+  background: linear-gradient(
+    287.65deg,
+    #10482b 2.07%,
+    #457303 51.82%,
+    #10482b 94.05%
+  );
+}
+
+.button {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button.hovered {
+  opacity: 0.8;
+}
+
+.notification-icon {
+  position: relative;
+  display: inline-flex;
+}
+
+.notification-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 20px;
+  background-color: #00af50;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 10px;
+  margin-top: -8px;
+  height: 18px;
+  width: 21px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 330px;
+  height: 250px;
+}
+
+.layout-main {
+  width: "100%";
+  /* overflow-y: "auto"; */
+  margin-left: "260px";
+  background-color: "rgba(255, 255, 255, 0.5)";
+  padding: "32px";
+  margin-top: "20px";
+  border-radius: "8px";
+}
+
+.layout-icon-body {
+  border: 2px solid #e8eaed;
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.margin-left-0 {
+  margin-left: 0;
+}
+
+.margin-left-negative-260px {
+  margin-left: -260px;
+}
+
+.fixed-topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* .responsive-button {
+  width: 120px;
+  font-size: 12px;
+}
+
+@media (max-width: 400px) {
+  .responsive-button {
+      width: 80px; 
+      font-size: 8px;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+} */
+
+.custom-radio input[type="radio"] {
+  accent-color: #28a745;
+}
+
+.tiny-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+}
+
+/* Chrome, Safari, Edge */
+.tiny-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Set width for vertical scrollbar */
+  height: 6px; /* Set height for horizontal scrollbar */
+}
+
+.test {
+  border: 2px solid red;
+}
+
+/* Date picker */
+
+.rmdp-input {
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  height: inherit !important;
+}
+
+.rmdp-panel-body li .b-deselect {
+  background-color: inherit !important;
+}
+
+.green .b-deselect {
+  background-color: inherit !important;
+  color: white !important;
 }
