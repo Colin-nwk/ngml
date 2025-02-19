@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('customer_site_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('invoice_advice_created_by_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('created_by_id')->nullable()->constrained('users')->cascadeOnDelete();
 
             // TODO : add approval levels, approved by ids
             $table->foreignId('approval_level_id')->nullable()->constrained()->cascadeOnDelete();

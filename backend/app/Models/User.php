@@ -45,6 +45,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'status' => 'integer',
         ];
     }
 
@@ -73,7 +74,7 @@ class User extends Authenticatable
         return $this->belongsTo(Unit::class);
     }
 
-    public function approvalLevel(): BelongsTo
+    public function approval_level(): BelongsTo
     {
         return $this->belongsTo(ApprovalLevel::class);
     }

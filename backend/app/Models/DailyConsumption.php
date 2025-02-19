@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DailyConsumption extends Model
 {
@@ -27,4 +28,24 @@ class DailyConsumption extends Model
         'outlet_pressure' => 'float',
         'status' => 'integer',
     ];
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function customer_site(): BelongsTo
+    {
+        return $this->belongsTo(CustomerSite::class);
+    }
+
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function approved_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

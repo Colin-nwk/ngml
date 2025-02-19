@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CustomerDocument extends Model
 {
@@ -24,4 +25,19 @@ class CustomerDocument extends Model
         'approval_status' => 'boolean',
         'status' => 'boolean',
     ];
+
+    public function created_by_user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
 }
