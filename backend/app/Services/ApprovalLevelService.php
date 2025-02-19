@@ -13,7 +13,7 @@ class ApprovalLevelService
     public function validateApprovalLevel(array $data, bool $isUpdate = false): array
     {
         $rules = [
-            'name' => ($isUpdate ? 'sometimes|' : 'required|') . 'string|max:255|in:' . implode(',', ApprovalLevel::APPROVAL_LEVELS),
+            'name' => ($isUpdate ? 'sometimes|' : 'required|') . 'string|max:255|unique:approval_levels,name|in:' . implode(',', ApprovalLevel::APPROVAL_LEVELS),
             'description' => 'nullable|string',
         ];
 

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('customer_site_id')->constrained()->cascadeOnDelete();
             $table->string("document_name")->nullable();
-            $table->string("document_url")->comment("file path");
             $table->string("document_description")->nullable();
             $table->string("document_type");
+            $table->json("document_metadata")->nullable();
             $table->date('document_date')->nullable()->comment('date of document or visit date for type:site-visit');
             $table->boolean("approval_status")->default(false);
             $table->timestamps();

@@ -24,6 +24,7 @@ class CustomerDocument extends Model
         'document_date' => 'date',
         'approval_status' => 'boolean',
         'status' => 'boolean',
+        'document_metadata' => 'array',
     ];
 
     public function created_by_user(): BelongsTo
