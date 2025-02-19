@@ -14,7 +14,7 @@ class DesignationService
     {
         $rules = [
             'role' => ($isUpdate ? 'sometimes|' : 'required|') . 'string|max:255',
-            'description' => 'required|string',
+            'description' => ($isUpdate ? 'sometimes|' : 'required|') . 'string',
             'level' => 'nullable|string|max:255',
             'status' => ($isUpdate ? 'sometimes|' : 'required|') . 'integer|in:0,1',
         ];
