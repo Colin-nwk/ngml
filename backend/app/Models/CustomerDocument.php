@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CustomerDocument extends Model
 {
-    public static $types = ['eoi'=>'EOI', 'ddq'=>'DDQ', 'site-visit-report'=>'SITE_VISIT_REPORT', 'agreement'=>'AGREEMENT',];
+    public const TYPES = ['eoi'=>'EOI', 'ddq'=>'DDQ', 'site-visit-report'=>'SITE_VISIT_REPORT', 'agreement'=>'AGREEMENT',];
 
     /**
      * The attributes that are mass not assignable.

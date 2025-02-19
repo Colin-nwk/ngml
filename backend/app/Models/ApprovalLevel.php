@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApprovalLevel extends Model
 {
-    public static $approvalLevels = ['level1', 'level2', 'level3', 'level4', 'level5'];
+    public const APPROVAL_LEVELS = ['level1', 'level2', 'level3', 'level4', 'level5'];
     /** @use HasFactory<\Database\Factories\ApprovalLevelFactory> */
     use HasFactory;
 

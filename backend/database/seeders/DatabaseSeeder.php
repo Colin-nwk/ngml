@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $roleModels = [];
-        foreach (Role::$roles as $role) {
+        foreach (Role::ROLES as $role) {
             $roleModels[] = Role::factory()->create([
                 'name' => $role,
                 'description' => $role,
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'department_id' => $department->id,
         ]);
         $approvalLevels = [];
-        foreach (ApprovalLevel::$approvalLevels as $level) {
+        foreach (ApprovalLevel::APPROVAL_LEVELS as $level) {
             $approvalLevels[] = ApprovalLevel::factory()->create([
                 'name' => $level,
             ]);
