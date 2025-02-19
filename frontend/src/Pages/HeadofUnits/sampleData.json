@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Dr. Emily Chen",
+      "email": "emily.chen@example.com",
+      "department": "Research and Development",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "Michael Johnson",
+      "email": "michael.johnson@example.com",
+      "department": "Human Resources",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "Sarah Williams",
+      "email": "sarah.williams@example.com",
+      "department": "Finance",
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "Dr. James Rodriguez",
+      "email": "james.rodriguez@example.com",
+      "department": "Engineering",
+      "status": 1
+    },
+    {
+      "id": 5,
+      "name": "Lisa Thompson",
+      "email": "lisa.thompson@example.com",
+      "department": "Marketing",
+      "status": 1
+    },
+    {
+      "id": 6,
+      "name": "Robert Kim",
+      "email": "robert.kim@example.com",
+      "department": "Information Technology",
+      "status": 1
+    },
+    {
+      "id": 7,
+      "name": "Emma Davis",
+      "email": "emma.davis@example.com",
+      "department": "Customer Relations",
+      "status": 1
+    },
+    {
+      "id": 8,
+      "name": "Daniel Brown",
+      "email": "daniel.brown@example.com",
+      "department": "Operations",
+      "status": 1
+    },
+    {
+      "id": 9,
+      "name": "Olivia Martinez",
+      "email": "olivia.martinez@example.com",
+      "department": "Legal",
+      "status": 1
+    },
+    {
+      "id": 10,
+      "name": "William Lee",
+      "email": "william.lee@example.com",
+      "department": "Product Management",
+      "status": 1
+    }
+  ]
+}
