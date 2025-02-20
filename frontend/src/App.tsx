@@ -10,5 +10,5 @@ function App() {
     <RouterProvider router={RouterConfig()} />
   );
 }
-
+ 
 export default App;
