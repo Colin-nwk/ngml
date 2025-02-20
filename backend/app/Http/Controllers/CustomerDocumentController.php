@@ -91,8 +91,9 @@ class CustomerDocumentController extends Controller
         try {
             $customerId = $request->input('customer_id');
             $customerSiteId = $request->input('customer_site_id');
-            $customerDocument = ($customerId && $customerSiteId) ?
-                $this->customerDocumentService->getByCustomerSite($customerId, $customerSiteId) :
+            $documentType = $request->input('document_type');
+            $customerDocument = ($customerId && $customerSiteId && $documentType) ?
+                $this->customerDocumentService->getByCustomerSiteDocType($customerId, $customerSiteId, $documentType) :
                 $this->customerDocumentService->getById($id);
 
             return (new CustomerDocumentResource($customerDocument))->additional([
@@ -119,8 +120,9 @@ class CustomerDocumentController extends Controller
         try {
             $customerId = $request->input('customer_id');
             $customerSiteId = $request->input('customer_site_id');
-            $customerDocument = ($customerId && $customerSiteId) ?
-                $this->customerDocumentService->getByCustomerSite($customerId, $customerSiteId) :
+            $documentType = $request->input('document_type');
+            $customerDocument = ($customerId && $customerSiteId && $documentType) ?
+                $this->customerDocumentService->getByCustomerSiteDocType($customerId, $customerSiteId, $documentType) :
                 $this->customerDocumentService->getById($id);
 
             $updatedDocument = $this->customerDocumentService->update(array_merge($request->all(), ['id' => $customerDocument->id]));

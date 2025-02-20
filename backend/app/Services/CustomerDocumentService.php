@@ -57,10 +57,11 @@ class CustomerDocumentService
         return CustomerDocument::findOrFail($id);
     }
 
-    public function getByCustomerSite(int $customerId, int $customerSiteId): CustomerDocument
+    public function getByCustomerSiteDocType(int $customerId, int $customerSiteId, string $documentType): CustomerDocument
     {
         $customerDocument = CustomerDocument::where('customer_id', $customerId)
             ->where('customer_site_id', $customerSiteId)
+            ->where('document_type', $documentType)
             ->first();
         if(!$customerDocument) {
             throw new \InvalidArgumentException('Customer document not found');
