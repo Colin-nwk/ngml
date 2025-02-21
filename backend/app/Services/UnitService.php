@@ -15,7 +15,6 @@ class UnitService
         $rules = [
             'name' => ($isUpdate ? 'sometimes|' : 'required|') . 'string|max:255',
             'description' => 'nullable|string',
-            'department_id' => ($isUpdate ? 'sometimes|' : 'required|') . 'exists:departments,id',
         ];
 
         $validator = Validator::make($data, $rules);
@@ -35,7 +34,7 @@ class UnitService
             if (in_array($key, ['created_at_from', 'created_at_to', 'updated_at_from', 'updated_at_to'])) {
                 $operator = str_contains($key, '_from') ? '>=' : '<=';
                 $query->whereDate(str_replace(['_from', '_to'], '', $key), $operator, $value);
-            } elseif (in_array($key, ['name', 'department_id'])) {
+            } elseif (in_array($key, ['name'])) {
                 $query->where($key, $value);
             }
         }

@@ -17,7 +17,6 @@ class CreateUnitsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

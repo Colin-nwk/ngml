@@ -10,6 +10,14 @@ class Department extends Model
     /** @use HasFactory<\Database\Factories\DepartmentFactory> */
     use HasFactory;
 
+    public const DEPARTMENTS = [
+        'Business Services',
+        'COBD',
+        'Finance',
+        'Gas Distribution',
+        'Managing Director'
+    ];
+
     /**
      * The attributes that are mass not assignable.
      *
