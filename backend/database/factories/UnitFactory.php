@@ -19,7 +19,6 @@ class UnitFactory extends Factory
         return [
             'name' => fake()->company(),
             'description' => fake()->sentence(),
-            'department_id' => fake()->numberBetween(1, 100),
         ];
     }
 }

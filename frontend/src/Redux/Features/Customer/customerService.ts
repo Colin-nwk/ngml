@@ -27,11 +27,11 @@ export interface CustomerSite {
   status: boolean;
   created_at: string;
   updated_at: string;
-  sites: Site[];  
+  sites: Site[];
 }
 
 export interface CustomerWithSite {
-  data: CustomerSite;  
+  data: CustomerSite;
 }
 
 // New interface for individual customer data
@@ -68,7 +68,7 @@ export interface FormField {
   elementType: string;
   placeholder?: string;
   key?: string;
-};
+}
 
 export interface DollarRate {
   rate: string | number | null;
@@ -83,42 +83,42 @@ export interface DollarFormData {
 export const customersApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getCustomers: builder.query<CustomerResponse, void>({
-      query: () => '/customer/api/customers',
+      query: () => '/customers',
       providesTags: ['Customers'],
-     
+
     }),
     getCustomerById: builder.query<CustomerWithSite, number>({
-      query: (id) => `/customer/api/customers/${id}`,
-    
+      query: (id) => `/customers/${id}`,
+
       providesTags: ['Customers'],
     }),
     addCustomer: builder.mutation<CustomerResponse, Omit<CustomerData, 'id' | 'created_at' | 'updated_at'>>({
       query: (customer) => ({
-        url: '/customer/api/customers',
+        url: '/customers',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: customer,
       }),
       invalidatesTags: ['Forms', 'Customers', 'Tasks'],
-     
+
     }),
     updateCustomer: builder.mutation<CustomerResponse, Partial<CustomerData> & { id: number }>({
       query: ({ id, ...updates }) => ({
-        url: `/customer/api/customers/${id}`,
+        url: `/customers/${id}`,
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: updates,
       }),
-     
+
     }),
     deleteCustomer: builder.mutation<{ success: boolean; id: number }, number>({
       query: (id) => ({
-        url: `/customer/api/customers/${id}`,
+        url: `/customers/${id}`,
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       }),
       invalidatesTags: ['Forms', 'Customers', 'Tasks'],
-     
+
     }),
   }),
   overrideExisting: false,

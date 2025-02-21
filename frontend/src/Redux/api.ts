@@ -10,20 +10,21 @@ import {
 import { toast } from 'react-toastify';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://api.ngml.skillzserver.com',
+  // baseUrl: 'http://localhost:8000/api/v1',
+  baseUrl: import.meta.env.VITE_NGML_URL,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as any).auth.access_token;
 
-    const authToken = import.meta.env.VITE_NGML_DEV === 'development'
-      ? import.meta.env.VITE_NGML_API_TOKEN
-      : token;
+    const authToken =
+      import.meta.env.VITE_NGML_DEV === 'development'
+        ? import.meta.env.VITE_NGML_API_TOKEN
+        : token;
 
     if (authToken && typeof authToken === 'string') {
-      console.log(authToken, 'llllllll')
+      console.log(authToken, 'llllllll');
       headers.set('authorization', `Bearer ${authToken}`);
-
     } else {
-      console.log('noToken')
+      console.log('noToken');
     }
 
     return headers;
@@ -33,7 +34,7 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (
   args: string | FetchArgs,
   api: BaseQueryApi,
-  extraOptions: BaseQueryExtraOptions<typeof baseQuery>,
+  extraOptions: BaseQueryExtraOptions<typeof baseQuery>
 ) => {
   try {
     const result = await baseQuery(args, api, extraOptions);
@@ -71,7 +72,9 @@ const baseQueryWithReauth = async (
   } catch (error) {
     console.error('Unexpected error in baseQueryWithReauth:', error);
     // toast.error('An unexpected error occurred. Please try again later.');
-    return { error: { status: 'CUSTOM_ERROR', error: 'Unexpected error occurred' } };
+    return {
+      error: { status: 'CUSTOM_ERROR', error: 'Unexpected error occurred' },
+    };
   }
 };
 
@@ -81,6 +84,29 @@ export const api = createApi({
   keepUnusedDataFor: 30,
   refetchOnFocus: true,
   endpoints: () => ({}),
-  tagTypes: ['Customers', 'Suppliers', 'EOI', 'Tasks', 'Forms', 'ProcessFlow', 'FormBuilder', 'Routes', 'Users', 'AssignTasks', 'HeadsOfUnit', 'UsersSettings', 'Units', 'Designations', 'Departments', 'Locations', 'Staff', 'SSO_init', 'SSO_callback', 'Tags', 'DynamicContent', 'InvoiceAdvice', 'DailyVolumes'],
+  tagTypes: [
+    'Customers',
+    'Suppliers',
+    'EOI',
+    'Tasks',
+    'Forms',
+    'ProcessFlow',
+    'FormBuilder',
+    'Routes',
+    'Users',
+    'AssignTasks',
+    'HeadsOfUnit',
+    'UsersSettings',
+    'Units',
+    'Designations',
+    'Departments',
+    'Locations',
+    'Staff',
+    'SSO_init',
+    'SSO_callback',
+    'Tags',
+    'DynamicContent',
+    'InvoiceAdvice',
+    'DailyVolumes',
+  ],
 });
-

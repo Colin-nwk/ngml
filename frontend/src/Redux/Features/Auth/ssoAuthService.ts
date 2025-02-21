@@ -27,13 +27,13 @@ interface FormData {
 export const ssoAuthApi = api.injectEndpoints({
   endpoints: (builder) => ({
     initialize: builder.query<any, void>({
-      query: () => '/users/api/auth/initialize',
+      query: () => '/auth/initialize',
       providesTags: ['SSO_init'],
     }),
 
     userInfo: builder.mutation<FormData, FormData>({
       query: (data) => ({
-        url: '/users/api/v1/initialize_user_basic_info',
+        url: '/auth/initialize_user_basic_info',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: data,
@@ -42,7 +42,7 @@ export const ssoAuthApi = api.injectEndpoints({
 
     callback: builder.mutation<SSSORegistrationResponse, any>({
       query: (data) => ({
-        url: '/users/api/auth/callback',
+        url: '/auth/callback',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: data,
