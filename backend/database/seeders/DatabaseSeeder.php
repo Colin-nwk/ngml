@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->command->info('Starting DatabaseSeeder...');
         $roleModels = [];
         foreach (Role::ROLES as $role) {
             $roleModels[] = Role::factory()->create([
@@ -27,33 +28,81 @@ class DatabaseSeeder extends Seeder
                 'description' => $role,
             ]);
         }
-        $department = Department::factory()->create([
-            'name' => 'Test Department',
-        ]);
-        $location = Location::factory()->create([
-            'location' => 'Test Location',
-        ]);
-        $designation = Designation::factory()->create();
-        $unit = Unit::factory()->create([
-            'department_id' => $department->id,
-        ]);
+
         $approvalLevels = [];
-        foreach (ApprovalLevel::APPROVAL_LEVELS as $level) {
+        foreach (ApprovalLevel::APPROVAL_LEVELS as $approvalLevel) {
             $approvalLevels[] = ApprovalLevel::factory()->create([
-                'name' => $level,
+                'name' => $approvalLevel,
+                'description' => $approvalLevel,
             ]);
         }
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('password'),
-            'role_id' => $roleModels[0]->id,
-            'department_id' => $department->id,
-            'location_id' => $location->id,
-            'designation_id' => $designation->id,
-            'unit_id' => $unit->id,
-            'approval_level_id' => $approvalLevels[0]->id,
-            'status' => 1
-        ]);
+
+        // MAJOR SEEDS
+        $allLocations = array_merge(...array_values(Location::LOCATIONS_BY_ZONE));
+        $locations = [];
+        foreach ($allLocations as $location) {
+            $locations[] = Location::factory()->create([
+                'location' => $location,
+                'zone' => $this->getZoneByLocation($location),
+                'state' => Location::LOCATION_TO_STATE[$location],
+            ]);
+        }
+
+        $departments = [];
+        foreach (Department::DEPARTMENTS as $department) {
+            $departments[] = Department::factory()->create([
+                'name' => $department,
+                'description' => $department,
+            ]);
+        }
+
+        $designations = [];
+        foreach (Designation::DESIGNATIONS as $designation) {
+            $designations[] = Designation::factory()->create([
+                'role' => $designation,
+                'description' => $department,
+                'level' => null,
+            ]);
+        }
+
+        $units = [];
+        foreach (Unit::UNITS as $unit) {
+            $units[] = Unit::factory()->create([
+                'name' => $unit,
+                'description' => $unit,
+            ]);
+        }
+
+        // Test User for Authentication {Backend API token}
+        if (app()->environment('local')) {
+            if ($this->command->confirm('Do you want a test user?', true)) {
+                $user = User::factory()->create([
+                    'name' => 'Test User',
+                    'email' => 'tester@example.com',
+                    'password' => Hash::make('password'),
+                    'department_id' => $departments[0]->id,
+                    'location_id' => $locations[0]->id,
+                    'designation_id' => $designations[0]->id,
+                    'unit_id' => $units[0]->id,
+                    'role_id' => $roleModels[0]->id,
+                    'approval_level_id' => $approvalLevels[0]->id,
+                    'status' => 1
+                ]);
+                $apiToken = $user->createToken('API Token')->plainTextToken;
+                $this->command->info("API Token: $apiToken");
+            }
+        }
+        $this->command->newLine();
+        $this->command->info('DatabaseSeeder completed successfully!');
+    }
+
+    private function getZoneByLocation($location)
+    {
+        foreach (Location::LOCATIONS_BY_ZONE as $key => $locations) {
+            if (in_array($location, $locations)) {
+                return $key;
+            }
+        }
+        return null;
     }
 }
