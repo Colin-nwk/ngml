@@ -19,8 +19,8 @@ Route::prefix('v1')->group(function() {
         return ["message"=> "test successful"];
     });
 
-    Route::get('auth/initialize', [AuthController::class, 'initialize']);
-    Route::post('auth/callback', [AuthController::class, 'callback']);
+    Route::get('/auth/initialize', [AuthController::class, 'initialize']);
+    Route::post('/auth/callback', [AuthController::class, 'callback']);
     Route::get('/login', [AuthController::class, 'loginError'])->name('login');
 
     Route::middleware(['auth:sanctum'])->group(function () {
