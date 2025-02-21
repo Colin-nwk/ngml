@@ -17,7 +17,7 @@ export const customersApi = api.injectEndpoints({
 
         getAllCustomersDailyVolume: builder.query<any, Filters>({
             query: (params) => ({
-                url: '/gas/api/daily-volumes',
+                url: '/daily-volumes',
                 method: 'POST',
                 body: params,
             }),
@@ -25,7 +25,7 @@ export const customersApi = api.injectEndpoints({
 
         }),
         getCustomersDailyVolumeById: builder.query<any, number>({
-            query: (customerId) => `/gas/api/daily-volumes/view/${customerId}`,
+            query: (customerId) => `/daily-volumes/view/${customerId}`,
             providesTags: ['DailyVolumes'],
         }),
     }),

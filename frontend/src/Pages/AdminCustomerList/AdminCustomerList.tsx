@@ -16,7 +16,7 @@ type CustomerData = {
 };
 
 const AdminCustomerList: React.FC = () => {
-    const { isModalOpen, toggleModal } = useModalManagement('createCustomer');  
+    const { isModalOpen, toggleModal } = useModalManagement('createCustomer');
     const [customerForm, setCustomerForm] = useState<FormField[]>([]);
     const [customerData, setCustomerData] = useState<CustomerData>({});
     const [formError, setFormError] = useState<string>('');
@@ -146,7 +146,7 @@ const AdminCustomerList: React.FC = () => {
             setFormError('An error occurred while submitting the form. Please try again.');
         }
     };
-    
+
 
     return (
         <div className="">
