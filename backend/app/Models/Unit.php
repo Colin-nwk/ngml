@@ -10,6 +10,33 @@ class Unit extends Model
 {
     /** @use HasFactory<\Database\Factories\UnitFactory> */
     use HasFactory;
+    public const UNITS = [
+        "N/A",
+        "GRC",
+        "RGDN",
+        "RGDD",
+        "RGDL",
+        "BUSINESS DEVELOPMENT",
+        "STRATEGY AND SUSTAINABILITY",
+        "COMMERCIAL OPERATIONS",
+        "HCM",
+        "SECURITY",
+        "ADMIN",
+        "ICT",
+        "TREASURY",
+        "HSE",
+        "MD's OFFICE",
+        "CSLA",
+        "RGDE",
+        "MARKET INSIGHT AND ANALYTICS",
+        "CONTRACT MANAGEMENT",
+        "BUDGET AND FINANCIAL ANALYSIS",
+        "FINANCIAL CONTROL AND ACCOUNTING",
+        "TAX FILING AND COMPLIANCE",
+        "STRATEGY AND SUSTAINABILITY",
+        "RDGL"
+    ];
+
 
     /**
      * The attributes that are mass not assignable.
@@ -21,9 +48,4 @@ class Unit extends Model
         'created_at',
         'updated_at',
     ];
-
-    public function department(): BelongsTo
-    {
-        return $this->belongsTo(Department::class);
-    }
 }

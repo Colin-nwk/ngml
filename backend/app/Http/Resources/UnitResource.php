@@ -18,10 +18,8 @@ class UnitResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'department_id' => $this->department_id,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
-            'department' => new DepartmentResource($this->whenLoaded('department'))
         ];
     }
 }
