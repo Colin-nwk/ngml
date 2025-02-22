@@ -30,6 +30,32 @@ return new class extends Migration
         });
     }
 
+    //approval level
+    // id: 1
+    // type: 'hod'
+    // approvalsId: ''
+
+
+
+
+    // REPORT
+    // date:
+    // customer_id
+    // aprrovals [1,7,9]
+    // stage 9
+    // match of userId against approvalId
+    // model name: report
+    // flow name: incoice generation flow
+
+
+    // MASTER flow
+
+    // name: incoice generation flow
+    // level: [daily, report, gcc, invoice]
+
+    //
+
+
     /**
      * Reverse the migrations.
      */
